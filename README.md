@@ -83,23 +83,4 @@ docker run --rm -p 8000:8000 policy-rag-showcase
 4. **Cite every knowledge answer:** sources, chunk IDs and scores make retrieval debuggable.
 5. **Use provider boundaries:** embeddings and storage can be replaced without rewriting the API.
 
-## Production roadmap
-
-- Replace the local embedding baseline with OpenAI, Bedrock or Sentence Transformers.
-- Replace the in-memory store with Pinecone, Qdrant or pgvector.
-- Add hybrid retrieval, a cross-encoder reranker and parent-child chunking.
-- Add an LLM generator with structured outputs and prompt-injection defences.
-- Build a golden evaluation dataset and measure retrieval recall, faithfulness,
-  latency and cost before deployment.
-- Add authentication, rate limiting, tracing and persistent ingestion jobs.
-
-## Example interview explanation
-
-> I built a small policy-grounded RAG service with separate ingestion and query
-> paths. Documents are parsed, chunked, embedded and indexed with metadata. At
-> query time, deterministic routes handle non-knowledge requests while policy
-> questions use geography-filtered retrieval. The service answers only when the
-> evidence crosses a threshold and returns citations for debugging. I kept the
-> embedding and vector-store interfaces replaceable so the local demo can evolve
-> into a production deployment using OpenAI or Bedrock and Pinecone.
 
